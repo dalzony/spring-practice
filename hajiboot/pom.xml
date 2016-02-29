@@ -7,12 +7,63 @@
   <version>1.0.0-SNAPSHOT</version>
   <name>hajiboot</name>
   <url>http://maven.apache.org</url>
+
+
+  <!-- 1. 스프링 부트의 설정정보 상속, 스프링 부트 버전을 올리려면 version태그안의 설정값 변경 -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.2.4.RELEASE</version>
+  </parent>
+
   <dependencies>
+
+    <!-- 여기는 자동으로 생성되었는데 아직 모름 -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- 2. 스프링 부트 , 웹 앱을 만들 때 참조할 기본 라이브러리 정보 설정
+    이걸 씀으로써 스프링 프레임웍 관련 라이브러리와 서드파티 라이브러리 사용가능
+    버전은 1번 'spring-boot-starter-parent'에서 정의 해서 지정하지 않으도 됨
+    -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- 스프링 부트로 제작하는 과정에서 유닛 테스트에 필요한 라이브러리 참조 정보 설정 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+
+  <!-- 스프링 부트로 제작한 앱을 간단히 빌드하고 실행하기 위해 메이븐 플러그인 설정 -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <!-- 리로드 추가 -->
+        <dependencies>
+          <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+            <version>1.2.3.RELEASE</version>
+          </dependency>
+        </dependencies>
+        <!-- 리로드 추가 끝 -->
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- 자바 8 사용할 수 있게 설정 -->
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
 </project>
