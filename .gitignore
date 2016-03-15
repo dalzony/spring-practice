@@ -1,3 +1,8 @@
+# ide
 .idea/
+*.iml
+
+# target
 hajiboot/target/
 hajiboot-di/target/
+
