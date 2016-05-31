@@ -5,4 +5,5 @@
 # target
 hajiboot/target/
 hajiboot-di/target/
+hajiboot-jdbc/target/
 
