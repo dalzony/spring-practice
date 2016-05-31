@@ -6,13 +6,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Hello world!
@@ -35,6 +31,7 @@ public class App implements CommandLineRunner
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("id", 1);
 
+        /*
         Customer result = jdbcTemplate.queryForObject(sql, param,
                 new RowMapper<Customer>() {
                     @Override
@@ -43,7 +40,13 @@ public class App implements CommandLineRunner
                                 rs.getString("last_name"));
                     }
                 });
+        */
 
+        //람다 표현식을 사용해 RowMapper익명클래스 구현을 수정
+        Customer result = jdbcTemplate.queryForObject(sql, param,
+                (rs,rowNum) -> new Customer(rs.getInt("id"),
+                        rs.getString("first_name"), rs.getString("last_name"))
+        );
         System.out.println("result = " + result);
 
     }
