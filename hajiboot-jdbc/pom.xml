@@ -39,6 +39,11 @@
       <artifactId>lombok</artifactId>
       <version>1.16.4</version>
     </dependency>
+    <dependency>
+      <groupId>org.lazyluke</groupId>
+      <artifactId>log4jdbc-remix</artifactId>
+      <version>0.2.7</version>
+    </dependency>
   </dependencies>
 
   <build>

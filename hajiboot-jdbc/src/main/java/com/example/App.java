@@ -18,8 +18,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 @EnableAutoConfiguration
 @ComponentScan
 
-public class App implements CommandLineRunner
-{
+public class App implements CommandLineRunner {
     @Autowired
     NamedParameterJdbcTemplate jdbcTemplate;
 
